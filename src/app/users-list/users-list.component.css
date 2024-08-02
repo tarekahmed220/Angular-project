@@ -51,6 +51,18 @@
 .header {
   margin-bottom: 60px;
 }
+.header span:first-of-type {
+  border: 1px solid gray;
+  padding: 5px;
+  border-radius: 50%;
+  width: 12px;
+  display: block;
+  text-align: center;
+  margin: 5px;
+  position: absolute;
+  right: 0;
+  font-size: small;
+}
 .userbox {
   position: relative;
   border-radius: 6px;
@@ -67,6 +79,7 @@
 }
 .userbox .userImg img {
   max-width: 100%;
+  border-radius: 50%;
 }
 .userbox .boxBody {
   display: flex;
@@ -81,13 +94,13 @@
   font-size: 28px;
 }
 .userbox .boxBody p:first-of-type {
-  font-size: 24px;
-  color: #212529;
+  font-size: 20px;
+  color: #627b93;
   margin-bottom: 15px;
 }
 .userbox .boxBody p:nth-of-type(2) {
   padding: 0 15px;
-  text-align: start;
+  text-align: center;
   color: #212529;
 }
 .boxFooter {
@@ -101,4 +114,13 @@
 }
 .boxFooter i {
   cursor: pointer;
+  transition: all 0.3s;
+}
+.boxFooter i:hover {
+  color: #007bff;
+}
+
+.errorMessage {
+  text-align: center;
+  color: red;
 }

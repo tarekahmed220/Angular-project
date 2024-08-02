@@ -1,26 +1,26 @@
 <div class="container">
   <div class="pagePagination">
-    <span><i class="fa-solid fa-chevron-left"></i></span>
-    <span>1</span>
-    <span>2</span>
-    <span>3</span>
-    <span>4</span>
-    <span>5</span>
-    <span><i class="fa-solid fa-chevron-right"></i></span>
+    <span (click)="prevPage()"><i class="fa-solid fa-chevron-left"></i></span>
+    @for (pageNum of totalPages; track $index) {
+    <span [class.active]="pageNum === page" (click)="goToPage(pageNum)">
+      {{ pageNum }}
+    </span>
+    }
+    <span (click)="nextPage()"><i class="fa-solid fa-chevron-right"></i></span>
   </div>
+  @if(errorMessage == ""){
   <div class="users">
+    @for (user of users; track user.id) {
     <div class="userbox">
       <div class="header">
+        <span>{{ user.id }}</span>
         <div class="userImg">
-          <img
-            src="https://static.vecteezy.com/system/resources/previews/014/212/681/original/female-user-profile-avatar-is-a-woman-a-character-for-a-screen-saver-with-emotions-for-website-and-mobile-app-design-illustration-on-a-white-isolated-background-vector.jpg"
-            alt=""
-          />
+          <img [ngStyle]="getStyles()" [src]="user.avatar" alt="" />
         </div>
       </div>
       <div class="boxBody">
-        <h2>user name</h2>
-        <p>user email</p>
+        <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+        <p>{{ user.email }}</p>
         <p>
           Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
           commodo ligula eget dolor. Vivamus eget eros vestibulum, accumsan ante
@@ -33,173 +33,9 @@
         <i class="fa-brands fa-github"></i>
       </div>
     </div>
-    <div class="userbox">
-      <div class="header">
-        <div class="userImg">
-          <img
-            src="https://static.vecteezy.com/system/resources/previews/014/212/681/original/female-user-profile-avatar-is-a-woman-a-character-for-a-screen-saver-with-emotions-for-website-and-mobile-app-design-illustration-on-a-white-isolated-background-vector.jpg"
-            alt=""
-          />
-        </div>
-      </div>
-      <div class="boxBody">
-        <h2>user name</h2>
-        <p>user email</p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-          commodo ligula eget dolor. Vivamus eget eros vestibulum, accumsan ante
-          viverra, condimentum tellus.
-        </p>
-      </div>
-      <div class="boxFooter">
-        <i class="fa-brands fa-linkedin-in"></i>
-        <i class="fa-brands fa-twitter"></i>
-        <i class="fa-brands fa-github"></i>
-      </div>
-    </div>
-    <div class="userbox">
-      <div class="header">
-        <div class="userImg">
-          <img
-            src="https://static.vecteezy.com/system/resources/previews/014/212/681/original/female-user-profile-avatar-is-a-woman-a-character-for-a-screen-saver-with-emotions-for-website-and-mobile-app-design-illustration-on-a-white-isolated-background-vector.jpg"
-            alt=""
-          />
-        </div>
-      </div>
-      <div class="boxBody">
-        <h2>user name</h2>
-        <p>user email</p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-          commodo ligula eget dolor. Vivamus eget eros vestibulum, accumsan ante
-          viverra, condimentum tellus.
-        </p>
-      </div>
-      <div class="boxFooter">
-        <i class="fa-brands fa-linkedin-in"></i>
-        <i class="fa-brands fa-twitter"></i>
-        <i class="fa-brands fa-github"></i>
-      </div>
-    </div>
-    <div class="userbox">
-      <div class="header">
-        <div class="userImg">
-          <img
-            src="https://static.vecteezy.com/system/resources/previews/014/212/681/original/female-user-profile-avatar-is-a-woman-a-character-for-a-screen-saver-with-emotions-for-website-and-mobile-app-design-illustration-on-a-white-isolated-background-vector.jpg"
-            alt=""
-          />
-        </div>
-      </div>
-      <div class="boxBody">
-        <h2>user name</h2>
-        <p>user email</p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-          commodo ligula eget dolor. Vivamus eget eros vestibulum, accumsan ante
-          viverra, condimentum tellus.
-        </p>
-      </div>
-      <div class="boxFooter">
-        <i class="fa-brands fa-linkedin-in"></i>
-        <i class="fa-brands fa-twitter"></i>
-        <i class="fa-brands fa-github"></i>
-      </div>
-    </div>
-    <div class="userbox">
-      <div class="header">
-        <div class="userImg">
-          <img
-            src="https://static.vecteezy.com/system/resources/previews/014/212/681/original/female-user-profile-avatar-is-a-woman-a-character-for-a-screen-saver-with-emotions-for-website-and-mobile-app-design-illustration-on-a-white-isolated-background-vector.jpg"
-            alt=""
-          />
-        </div>
-      </div>
-      <div class="boxBody">
-        <h2>user name</h2>
-        <p>user email</p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-          commodo ligula eget dolor. Vivamus eget eros vestibulum, accumsan ante
-          viverra, condimentum tellus.
-        </p>
-      </div>
-      <div class="boxFooter">
-        <i class="fa-brands fa-linkedin-in"></i>
-        <i class="fa-brands fa-twitter"></i>
-        <i class="fa-brands fa-github"></i>
-      </div>
-    </div>
-    <div class="userbox">
-      <div class="header">
-        <div class="userImg">
-          <img
-            src="https://static.vecteezy.com/system/resources/previews/014/212/681/original/female-user-profile-avatar-is-a-woman-a-character-for-a-screen-saver-with-emotions-for-website-and-mobile-app-design-illustration-on-a-white-isolated-background-vector.jpg"
-            alt=""
-          />
-        </div>
-      </div>
-      <div class="boxBody">
-        <h2>user name</h2>
-        <p>user email</p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-          commodo ligula eget dolor. Vivamus eget eros vestibulum, accumsan ante
-          viverra, condimentum tellus.
-        </p>
-      </div>
-      <div class="boxFooter">
-        <i class="fa-brands fa-linkedin-in"></i>
-        <i class="fa-brands fa-twitter"></i>
-        <i class="fa-brands fa-github"></i>
-      </div>
-    </div>
-    <div class="userbox">
-      <div class="header">
-        <div class="userImg">
-          <img
-            src="https://static.vecteezy.com/system/resources/previews/014/212/681/original/female-user-profile-avatar-is-a-woman-a-character-for-a-screen-saver-with-emotions-for-website-and-mobile-app-design-illustration-on-a-white-isolated-background-vector.jpg"
-            alt=""
-          />
-        </div>
-      </div>
-      <div class="boxBody">
-        <h2>user name</h2>
-        <p>user email</p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-          commodo ligula eget dolor. Vivamus eget eros vestibulum, accumsan ante
-          viverra, condimentum tellus.
-        </p>
-      </div>
-      <div class="boxFooter">
-        <i class="fa-brands fa-linkedin-in"></i>
-        <i class="fa-brands fa-twitter"></i>
-        <i class="fa-brands fa-github"></i>
-      </div>
-    </div>
-    <div class="userbox">
-      <div class="header">
-        <div class="userImg">
-          <img
-            src="https://static.vecteezy.com/system/resources/previews/014/212/681/original/female-user-profile-avatar-is-a-woman-a-character-for-a-screen-saver-with-emotions-for-website-and-mobile-app-design-illustration-on-a-white-isolated-background-vector.jpg"
-            alt=""
-          />
-        </div>
-      </div>
-      <div class="boxBody">
-        <h2>user name</h2>
-        <p>user email</p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-          commodo ligula eget dolor. Vivamus eget eros vestibulum, accumsan ante
-          viverra, condimentum tellus.
-        </p>
-      </div>
-      <div class="boxFooter">
-        <i class="fa-brands fa-linkedin-in"></i>
-        <i class="fa-brands fa-twitter"></i>
-        <i class="fa-brands fa-github"></i>
-      </div>
-    </div>
+    }
   </div>
+  }@else {
+  <h2 class="errorMessage">{{ errorMessage }}</h2>
+  }
 </div>

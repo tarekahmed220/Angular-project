@@ -49,6 +49,7 @@
   left: 10px;
   top: 50%;
   transform: translateY(-50%);
+  color: #4a99f8;
 }
 
 .navContainer .search span.clear-icon {
@@ -58,7 +59,9 @@
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-  color: red;
+  color: #425865;
+  background: white;
+  padding: 2px;
 }
 
 .navContainer .search input {

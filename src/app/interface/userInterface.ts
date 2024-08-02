@@ -13,3 +13,8 @@ export interface UsersResponse {
   total_pages: number;
   data: userInterface[];
 }
+
+export interface userResponseById {
+  data: userInterface;
+  support: object;
+}

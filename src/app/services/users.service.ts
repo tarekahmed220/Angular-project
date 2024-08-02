@@ -1,7 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { userInterface, UsersResponse } from '../interface/userInterface';
-import { map, Observable } from 'rxjs';
+import {
+  userInterface,
+  userResponseById,
+  UsersResponse,
+} from '../interface/userInterface';
+import { catchError, map, Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +21,18 @@ export class UsersService {
         this.users = response.data;
         return this.users;
       })
+    );
+  }
+  getUserById(userId: string): Observable<userResponseById> {
+    return this.http
+      .get<userResponseById>(`${this.apiUrl}/${userId}`)
+      .pipe(catchError(this.handleError));
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    console.error('An error occurred:', error.message);
+    return throwError(
+      () => new Error('Something went wrong; please try again later.')
     );
   }
 }

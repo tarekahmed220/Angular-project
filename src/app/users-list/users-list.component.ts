@@ -1,33 +1,88 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../services/users.service';
 import { userInterface } from '../interface/userInterface';
+import { BehaviorSubject } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { SearchService } from '../services/search.service';
 
 @Component({
   selector: 'app-users-list',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './users-list.component.html',
-  styleUrl: './users-list.component.css',
+  styleUrls: ['./users-list.component.css'],
 })
 export class UsersListComponent implements OnInit {
-  users!: userInterface;
-  constructor(private _userServ: UsersService) {}
+  user = { id: 12 };
+  users!: userInterface[];
+  currentPage: BehaviorSubject<number> = new BehaviorSubject(1);
+  page: number = 1;
+  totalPages: number[] = [1, 2];
+  errorMessage: string = '';
+
+  constructor(
+    private _userServ: UsersService,
+    private _searchServ: SearchService
+  ) {}
 
   ngOnInit(): void {
-    const spans = document.querySelectorAll<HTMLSpanElement>(
-      '.pagePagination span'
-    );
-    spans.forEach((span) => {
-      span.addEventListener('click', () => {
-        spans.forEach((s) => {
-          s.classList.remove('active');
-        });
-        span.classList.add('active');
+    this.currentPage.subscribe((newPage) => {
+      this._userServ.getAllUsers(newPage).subscribe((response) => {
+        this.users = response;
+        this.errorMessage = '';
       });
     });
+    this.currentPage.next(this.page);
 
-    this._userServ.getAllUsers(1).subscribe((users) => {
-      console.log(users);
+    this._searchServ.searchTerm.subscribe((term) => {
+      if (term) {
+        this.searchById(term);
+      } else {
+        this._userServ.getAllUsers(this.page).subscribe((response) => {
+          this.users = response;
+          this.errorMessage = '';
+        });
+      }
     });
+  }
+
+  nextPage() {
+    if (this.page < this.totalPages.length) {
+      this.page++;
+      this.currentPage.next(this.page);
+    }
+  }
+
+  prevPage() {
+    if (this.page > 1) {
+      this.page--;
+      this.currentPage.next(this.page);
+    }
+  }
+
+  goToPage(page: number) {
+    this.page = page;
+    this.currentPage.next(this.page);
+  }
+
+  searchById(userId: string) {
+    this._userServ.getUserById(userId).subscribe(
+      (user) => {
+        console.log(user);
+        this.users = [user.data];
+        this.errorMessage = '';
+      },
+      (err) => {
+        this.users = [];
+        this.errorMessage =
+          'User not found. Please check the ID and try again.';
+      }
+    );
+  }
+  getStyles() {
+    return {
+      width: this.user.id === 12 ? '111px' : '100px',
+      height: this.user.id === 12 ? '96px' : 'auto',
+    };
   }
 }
