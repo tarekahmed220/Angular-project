@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px;
-  margin: 15px;
+  margin: 15px 15px 0;
   border-radius: 6px;
   position: relative;
 }
@@ -29,6 +29,14 @@
 
   .navContainer .search span.clear-icon {
     right: 10px;
+  }
+}
+.navContainer #inputcontainer {
+  position: relative;
+}
+@media (max-width: 500px) {
+  #inputcontainer {
+    width: 100%;
   }
 }
 
@@ -76,7 +84,7 @@
 
 .navContainer .search input {
   padding: 10px 10px 10px 40px;
-  width: 300px;
+
   max-width: 100%;
   border-radius: 6px;
   outline: none;

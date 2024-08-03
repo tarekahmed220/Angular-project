@@ -5,11 +5,12 @@ import { BehaviorSubject } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { SearchService } from '../services/search.service';
 import { RouterLink } from '@angular/router';
+import { FlexCenterDirective } from '../CustomeDirectives/flex-center.directive';
 
 @Component({
   selector: 'app-users-list',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, FlexCenterDirective],
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.css'],
 })

@@ -1,19 +1,21 @@
 <div class="navContainer">
-  <h2>Users List</h2>
+  <h2 [routerLink]="'users-list'" style="cursor: pointer">Users List</h2>
   <div class="search">
     <span class="search-icon"
       ><i class="fa-solid fa-magnifying-glass"></i
     ></span>
-    <input
-      #searchValue
-      pattern="\d*"
-      (keyup)="onSearch($event)"
-      type="number"
-      class="search-input"
-      placeholder="Search By Id Here..."
-    />
-    <span class="clear-icon" (click)="clearText(searchValue)">
-      <i class="fa-solid fa-xmark"></i>
-    </span>
+    <div id="inputcontainer">
+      <input
+        #searchValue
+        pattern="\d*"
+        (keyup)="onSearch($event)"
+        type="number"
+        class="search-input"
+        placeholder="Search By Id Here..."
+      />
+      <span class="clear-icon" (click)="clearText(searchValue)">
+        <i class="fa-solid fa-xmark"></i>
+      </span>
+    </div>
   </div>
 </div>
