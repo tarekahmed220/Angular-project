@@ -69,6 +69,11 @@
   margin-top: 40px;
   width: 300px;
   box-shadow: 0 0 40px 3px rgba(163, 161, 161, 0.5);
+  transition: all 0.3s;
+}
+.userbox:hover {
+  cursor: pointer;
+  transform: translateY(-10px);
 }
 .userbox .userImg {
   position: absolute;
@@ -120,7 +125,43 @@
   color: #007bff;
 }
 
-.errorMessage {
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-message {
+  background-color: #ffffff; /* White background for the message box */
+  border: 1px solid #f5c6cb; /* Light red border */
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 500px;
   text-align: center;
-  color: red;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.error-message h2 {
+  color: #721c24; /* Dark red color for the heading */
+  margin-bottom: 10px;
+}
+
+.error-message p {
+  color: #856404; /* Dark yellow color for the text */
+  font-size: 16px;
+}
+
+.error-message button {
+  margin-top: 20px;
+  background-color: #4a99f8; /* Blue background for the button */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.error-message button:hover {
+  background-color: #357bd8; /* Darker blue for hover effect */
 }

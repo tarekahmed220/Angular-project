@@ -11,7 +11,7 @@
   @if(errorMessage == ""){
   <div class="users">
     @for (user of users; track user.id) {
-    <div class="userbox">
+    <div class="userbox" [routerLink]="['/userdetails', user.id]">
       <div class="header">
         <span>{{ user.id }}</span>
         <div class="userImg">
@@ -36,6 +36,14 @@
     }
   </div>
   }@else {
-  <h2 class="errorMessage">{{ errorMessage }}</h2>
+  <div class="error-container">
+    <div class="error-message">
+      <h2>User Not Found ⚠️</h2>
+      <p>
+        The user ID you entered does not match any records. Please verify the ID
+        and try again.
+      </p>
+    </div>
+  </div>
   }
 </div>

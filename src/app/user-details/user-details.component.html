@@ -1,0 +1,15 @@
+<div class="user-details-container">
+  @if (user) {
+  <div class="user-details-card">
+    <img [src]="user.avatar" alt="Profile Picture" class="profile-picture" />
+    <h1 class="user-name">{{ user.first_name }} {{ user.last_name }}</h1>
+    <p class="user-email">{{ user.email }}</p>
+    <p class="user-bio">
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+      ligula eget dolor. Vivamus eget eros vestibulum, accumsan ante viverra,
+      condimentum tellus.
+    </p>
+    <button class="back-button" (click)="goBack()">Back to User List</button>
+  </div>
+  }
+</div>

@@ -3,14 +3,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 15px 10px;
-  margin: 15px 15px;
+  padding: 15px;
+  margin: 15px;
   border-radius: 6px;
+  position: relative;
 }
 
 @media (max-width: 500px) {
   .navContainer {
     flex-direction: column;
+    padding: 10px;
   }
 
   .navContainer h2 {
@@ -22,7 +24,7 @@
   }
 
   .navContainer .search input {
-    width: 100%;
+    width: calc(100% - 50px); /* Adjust input width to account for icons */
   }
 
   .navContainer .search span.clear-icon {
@@ -43,7 +45,7 @@
   flex: 1;
 }
 
-.navContainer .search span:first-child {
+.navContainer .search .search-icon {
   position: absolute;
   z-index: 1;
   left: 10px;
@@ -52,21 +54,30 @@
   color: #4a99f8;
 }
 
-.navContainer .search span.clear-icon {
+.navContainer .search .clear-icon {
   position: absolute;
   z-index: 1;
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-  color: #425865;
+  color: black;
   background: white;
-  padding: 2px;
+  border-radius: 50%;
+  padding: 5px;
+  font-size: 14px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.navContainer .search .clear-icon:hover {
+  background: white;
+  color: #4a99f8;
 }
 
 .navContainer .search input {
-  padding: 10px 10px 10px 30px;
-  width: 100%;
+  padding: 10px 10px 10px 40px;
+  width: 300px;
+  max-width: 100%;
   border-radius: 6px;
   outline: none;
   border: none;

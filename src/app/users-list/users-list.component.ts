@@ -4,11 +4,12 @@ import { userInterface } from '../interface/userInterface';
 import { BehaviorSubject } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { SearchService } from '../services/search.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-users-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.css'],
 })
@@ -36,7 +37,7 @@ export class UsersListComponent implements OnInit {
 
     this._searchServ.searchTerm.subscribe((term) => {
       if (term) {
-        this.searchById(term);
+        this.searchById(Number(term));
       } else {
         this._userServ.getAllUsers(this.page).subscribe((response) => {
           this.users = response;
@@ -65,10 +66,9 @@ export class UsersListComponent implements OnInit {
     this.currentPage.next(this.page);
   }
 
-  searchById(userId: string) {
+  searchById(userId: number) {
     this._userServ.getUserById(userId).subscribe(
       (user) => {
-        console.log(user);
         this.users = [user.data];
         this.errorMessage = '';
       },

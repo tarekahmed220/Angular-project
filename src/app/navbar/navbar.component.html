@@ -1,7 +1,9 @@
 <div class="navContainer">
   <h2>Users List</h2>
   <div class="search">
-    <span><i class="fa-solid fa-magnifying-glass"></i></span>
+    <span class="search-icon"
+      ><i class="fa-solid fa-magnifying-glass"></i
+    ></span>
     <input
       #searchValue
       pattern="\d*"
@@ -10,8 +12,8 @@
       class="search-input"
       placeholder="Search By Id Here..."
     />
-    <span class="clear-icon" (click)="clearText(searchValue)"
-      ><i class="fa-solid fa-xmark"></i
-    ></span>
+    <span class="clear-icon" (click)="clearText(searchValue)">
+      <i class="fa-solid fa-xmark"></i>
+    </span>
   </div>
 </div>
